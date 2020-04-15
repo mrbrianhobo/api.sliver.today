@@ -31,7 +31,7 @@ func main() {
 
 	// Set HTML callback
 	c.OnHTML("div .summary-excerpt p", func(e *colly.HTMLElement) {
-		fmt.Println(e)
+		// fmt.Println(e)
 		if e.Index == todaysPizzaIndex {
 			todaysPizza = e.Text
 		}
