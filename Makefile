@@ -7,7 +7,7 @@ test:
 	go test ./... -v
 
 .PHONY: try
-test: 
+try: 
 	go run main.go
 
 .PHONY: travis
