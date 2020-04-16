@@ -9,7 +9,6 @@ import (
 
 // TODO: update menu fields and update error
 func ScrapeURL(url string, querySelector string, index int) *common.Menu {
-
 	menu := &common.Menu{}
 
 	// Create a collector
@@ -18,7 +17,7 @@ func ScrapeURL(url string, querySelector string, index int) *common.Menu {
 	// Set HTML callback
 	c.OnHTML(querySelector, func(e *colly.HTMLElement) {
 		if e.Index == index {
-			menu.Pizza = e.Text
+			menu.Pizza = common.TrimStr(e.Text)
 		}
 	})
 
@@ -29,6 +28,7 @@ func ScrapeURL(url string, querySelector string, index int) *common.Menu {
 
 	// Start scraping
 	c.Visit(url)
+	menu.SetTime()
 
 	return menu
 }

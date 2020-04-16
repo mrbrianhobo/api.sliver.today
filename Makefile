@@ -8,7 +8,7 @@ test:
 
 .PHONY: try
 try: 
-	go run main.go
+	go run cmd/main.go
 
 .PHONY: travis
 travis: install try

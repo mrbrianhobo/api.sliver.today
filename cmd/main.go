@@ -1,9 +1,9 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 
-	"github.com/mrbrianhobo/sliver.today/common"
 	scraper "github.com/mrbrianhobo/sliver.today/web-scraper"
 )
 
@@ -22,5 +22,11 @@ const (
 
 func main() {
 	menu := scraper.ScrapeURL(telegraphURL, querySelector, todaysPizzaIndex)
-	fmt.Printf("today's sliver pizza is: %s\n", common.TrimStr(menu.Pizza))
+	fmt.Printf("today's sliver pizza is: %s\n", menu.Pizza)
+
+	stringified, _ := json.Marshal(menu)
+	fmt.Println(string(stringified))
+	// http.HandleFunc("/", api.Handler)
+	// fmt.Println("Listening on localhost:8080")
+	// log.Fatal(http.ListenAndServe(":8080", nil))
 }
