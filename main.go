@@ -15,11 +15,12 @@ const (
 	shattuckURL  = "https://www.sliverpizzeria.com/pizza-shattuck/?format=main-content"
 	broadwayURL  = "https://www.sliverpizzeria.com/pizza-broadway/?format=main-content"
 
-	// Today's Pizza is stored at index 2 of the query for ".row .sqs-row p"
+	// Today's Pizza is stored at index 2 of the query
+	querySelector    = ".row .sqs-row p"
 	todaysPizzaIndex = 2
 )
 
 func main() {
-	menu := scraper.ScrapeURL(telegraphURL, todaysPizzaIndex)
+	menu := scraper.ScrapeURL(telegraphURL, querySelector, todaysPizzaIndex)
 	fmt.Printf("today's sliver pizza is: %s\n", common.TrimStr(menu.Pizza))
 }

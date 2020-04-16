@@ -8,7 +8,7 @@ import (
 )
 
 // TODO: update menu fields and update error
-func ScrapeURL(url string, index int) *common.Menu {
+func ScrapeURL(url string, querySelector string, index int) *common.Menu {
 
 	menu := &common.Menu{}
 
@@ -16,7 +16,7 @@ func ScrapeURL(url string, index int) *common.Menu {
 	c := colly.NewCollector()
 
 	// Set HTML callback
-	c.OnHTML(".row .sqs-row p", func(e *colly.HTMLElement) {
+	c.OnHTML(querySelector, func(e *colly.HTMLElement) {
 		if e.Index == index {
 			menu.Pizza = e.Text
 		}
