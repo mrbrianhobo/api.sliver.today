@@ -9,19 +9,17 @@ import (
 
 const (
 	// Sliver URLs to crawl
-	// Note: uses Squarespace URL queries (https://developers.squarespace.com/url-queries)
-	// since normal website caching is weird
-	telegraphURL = "https://www.sliverpizzeria.com/pizza-telegraph/?format=main-content"
-	shattuckURL  = "https://www.sliverpizzeria.com/pizza-shattuck/?format=main-content"
-	broadwayURL  = "https://www.sliverpizzeria.com/pizza-broadway/?format=main-content"
+	telegraphURL = "https://www.sliverpizzeria.com/pizza-telegraph/"
+	shattuckURL  = "https://www.sliverpizzeria.com/pizza-shattuck/"
+	broadwayURL  = "https://www.sliverpizzeria.com/pizza-broadway/"
 
 	// Today's Pizza is stored at index 2 of the query
-	querySelector    = ".row .sqs-row p"
-	todaysPizzaIndex = 2
+	querySelector = "div .summary-excerpt p"
 )
 
 func main() {
-	menu := scraper.ScrapeURL(telegraphURL, querySelector, todaysPizzaIndex)
+
+	menu := scraper.ScrapeURL(telegraphURL, querySelector)
 	fmt.Printf("today's sliver pizza is: %s\n", menu.Pizza)
 
 	stringified, _ := json.Marshal(menu)

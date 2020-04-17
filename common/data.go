@@ -10,6 +10,10 @@ type Menu struct {
 	Pizza    string `json:"pizza"`
 }
 
+type Menus struct {
+	Pizzas []*Menu `json:"pizzas"`
+}
+
 type Location int
 
 const (
@@ -22,9 +26,9 @@ func (l Location) String() string {
 	return [...]string{"telegraph", "shattuck", "broadway"}[l]
 }
 
-func (menu *Menu) SetTime() {
+func (menu *Menu) SetTime(now time.Time) {
 	loc, _ := time.LoadLocation("America/Los_Angeles")
-	currentTime := time.Now().In(loc)
+	currentTime := now.In(loc)
 	menu.Date = currentTime.Format("2006-01-02")
 }
 

@@ -5,9 +5,16 @@ import (
 	"strings"
 )
 
-func TrimStr(in string) string {
-	space := regexp.MustCompile(`\s+`)
-	out := space.ReplaceAllString(in, " ")
+var (
+	regexes      = []string{`^[\s\p{Zs}]+|[\s\p{Zs}]+$`, `[\s\p{Zs}]{2,}`, `-[\s\p{Zs}]+`}
+	replacements = []string{"", " ", "-"}
+)
+
+func SanitizeStr(in string) string {
+	out := in
+	for i, regex := range regexes {
+		out = regexp.MustCompile(regex).ReplaceAllString(out, replacements[i])
+	}
 	return out
 }
 
