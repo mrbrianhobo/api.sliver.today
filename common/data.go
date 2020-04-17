@@ -27,9 +27,7 @@ func (l Location) String() string {
 }
 
 func (menu *Menu) SetTime(now time.Time) {
-	loc, _ := time.LoadLocation("America/Los_Angeles")
-	currentTime := now.In(loc)
-	menu.Date = currentTime.Format("2006-01-02")
+	menu.Date = now.Format(datetimeFmt)
 }
 
 func (menu *Menu) SetLocation(loc Location) {

@@ -12,6 +12,11 @@
 # below:
 .git
 .gitignore
+.travis.yml
+Makefile
+README.md
+LICENSE
 
+cmd
 node_modules
 #!include:.gitignore

@@ -3,9 +3,12 @@ package common
 import (
 	"regexp"
 	"strings"
+	"time"
 )
 
 var (
+	Timezone, _  = time.LoadLocation("America/Los_Angeles")
+	datetimeFmt  = "2006-01-02"
 	regexes      = []string{`^[\s\p{Zs}]+|[\s\p{Zs}]+$`, `[\s\p{Zs}]{2,}`, `-[\s\p{Zs}]+`}
 	replacements = []string{"", " ", "-"}
 )
