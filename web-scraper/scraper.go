@@ -11,7 +11,7 @@ import (
 
 func ScrapeURL(url string, querySelector string) *common.Menu {
 	menu := &common.Menu{}
-	now := time.Now().In(common.Timezone)
+	now := time.Now().In(time.Local)
 	index := -1
 
 	// Create a collector

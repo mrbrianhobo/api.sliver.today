@@ -15,7 +15,7 @@ var (
 	shattuckURL  = "https://www.sliverpizzeria.com/pizza-shattuck/"
 	broadwayURL  = "https://www.sliverpizzeria.com/pizza-broadway/"
 
-	// Today's Pizza is stored at index 2 of the query
+	// query selector for finding the menu items
 	querySelector = "div .summary-excerpt p"
 
 	telegraphKeywords = []string{"telegraph", "southside"}

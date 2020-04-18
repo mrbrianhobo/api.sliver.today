@@ -6,9 +6,5 @@ install:
 test: 
 	go test ./... -v
 
-.PHONY: try
-try: 
-	go run cmd/main.go
-
 .PHONY: travis
-travis: install try
+travis: install test

@@ -14,8 +14,8 @@
 .gitignore
 .travis.yml
 Makefile
-README.md
 LICENSE
+README.md
 
 cmd
 node_modules
