@@ -21,7 +21,7 @@ func main() {
 		var err error
 		time.Local, err = time.LoadLocation(tz)
 		if err != nil {
-			log.Printf("error loading location '%s': %v\n", tz, err)
+			log.Fatalf("error loading location '%s': %v\n", tz, err)
 		}
 	}
 
@@ -32,6 +32,6 @@ func main() {
 		port = "8080"
 	}
 
-	log.Println(fmt.Sprintf("Listening on localhost:%s", port))
+	log.Printf("Listening on localhost:%s\n", port)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
 }

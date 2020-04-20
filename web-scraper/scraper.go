@@ -1,7 +1,7 @@
 package scraper
 
 import (
-	"fmt"
+	"log"
 	"strings"
 	"time"
 
@@ -30,7 +30,8 @@ func ScrapeURL(url string, querySelector string) *common.Menu {
 
 	// Set error handler
 	c.OnError(func(r *colly.Response, err error) {
-		fmt.Println("Request URL:", r.Request.URL, "failed with response:", r, "\nError:", err.Error())
+		log.Printf("Request URL: %s failed with response: %v\n", r.Request.URL, r)
+		log.Printf("Error: %v\n", err)
 	})
 
 	// Start scraping

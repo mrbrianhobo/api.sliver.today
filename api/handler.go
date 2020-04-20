@@ -2,6 +2,7 @@ package api
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"strings"
 
@@ -28,6 +29,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	pizzas := make([]*common.Menu, 0)
 	values := r.URL.Query()
 
+	log.Printf("API Request URL: %s\n", r.URL.String())
 	switch loc := values.Get("location"); {
 	case loc == "", strings.EqualFold(loc, "all"):
 		telegraph := scraper.ScrapeURL(telegraphURL, querySelector)
@@ -40,18 +42,28 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		broadway.SetLocation(common.Broadway)
 
 		pizzas = append(pizzas, []*common.Menu{telegraph, shattuck, broadway}...)
+
+		log.Printf("%s pizza: %s\n", common.Telegraph, telegraph.Pizza)
+		log.Printf("%s pizza: %s\n", common.Shattuck, shattuck.Pizza)
+		log.Printf("%s pizza: %s\n", common.Broadway, broadway.Pizza)
 	case common.MatchKeywords(loc, telegraphKeywords):
 		menu := scraper.ScrapeURL(telegraphURL, querySelector)
 		menu.SetLocation(common.Telegraph)
 		pizzas = append(pizzas, menu)
+
+		log.Printf("%s pizza: %s\n", common.Telegraph, menu.Pizza)
 	case common.MatchKeywords(loc, shattuckKeywords):
 		menu := scraper.ScrapeURL(shattuckURL, querySelector)
 		menu.SetLocation(common.Shattuck)
 		pizzas = append(pizzas, menu)
+
+		log.Printf("%s pizza: %s\n", common.Shattuck, menu.Pizza)
 	case common.MatchKeywords(loc, broadwayKeywords):
 		menu := scraper.ScrapeURL(broadwayURL, querySelector)
 		menu.SetLocation(common.Broadway)
 		pizzas = append(pizzas, menu)
+
+		log.Printf("%s pizza: %s\n", common.Broadway, menu.Pizza)
 	}
 
 	menus := common.Menus{
