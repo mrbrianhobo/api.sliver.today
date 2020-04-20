@@ -19,7 +19,7 @@ func ScrapeURL(url string, querySelector string) *common.Menu {
 
 	// Set HTML callback
 	c.OnHTML(querySelector, func(e *colly.HTMLElement) {
-		if strings.EqualFold(e.Text, now.Weekday().String()) {
+		if strings.EqualFold(strings.TrimSpace(e.Text), now.Weekday().String()) {
 			index = e.Index + 2
 		}
 
