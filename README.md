@@ -16,14 +16,16 @@ $ curl --request GET \
 
 # Retrieve today's pizza menu by location
 $ curl --request GET \
-       --url 'https://api.sliver.today?location={location}' \
+       --url 'https://api.sliver.today/?location={location}' \
        --header 'accept: application/json'
 ```
 
 ### Running Locally
 
 ```bash
-$ go run main.go
+$ make install
+$ make dev
+go run main.go
 2020/05/07 18:17:00 Listening on localhost:8080
 ```
 
@@ -34,9 +36,9 @@ TODO: It's also bundled as a Docker image (for Google Cloud Run) so you can also
 
 ```go
 type Menu struct {
-	Location string `json:"location"`
-	Date     string `json:"date"`
-	Pizza    string `json:"pizza"`
+  Location string `json:"location"`
+  Date     string `json:"date"`
+  Pizza    string `json:"pizza"`
 }
 ```
 
