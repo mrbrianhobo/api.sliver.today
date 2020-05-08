@@ -4,6 +4,10 @@
 
 [api.sliver.today](http://api.sliver.today) is a free REST API for retrieving [Sliver Pizzeria](https://www.sliverpizzeria.com)'s pizza of the day.
 
+## 👀 Demo
+
+➡️ **[sliver.today](http://sliver.today)**
+
 ## 🚀 Getting Started
 
 ### Try it out!
@@ -109,7 +113,7 @@ Frontend: Typescript + [Next.js](https://nextjs.org) + [MDX](https://mdxjs.com) 
 
 **Why did you make this?**
 
-IDK. I was bored. Really bored. 😴
+IDK. I really like Sliver. And I was bored. Really bored. 😴
 
 ## 📝 License
 
