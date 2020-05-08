@@ -27,7 +27,7 @@ $ go run main.go
 2020/05/07 18:17:00 Listening on localhost:8080
 ```
 
-Now you can visit [http://localhost:8080](http://localhost:8080) and test out the API!
+Now you can visit [http://localhost:8080](http://localhost:8080) and test out the API!  
 TODO: It's also bundled as a Docker image (for Google Cloud Run) so you can also run it that way. 
 
 ### Pizza Menu Object
