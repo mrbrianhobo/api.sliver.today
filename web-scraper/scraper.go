@@ -19,7 +19,8 @@ func ScrapeURL(url string, querySelector string) *common.Menu {
 
 	// Set HTML callback
 	c.OnHTML(querySelector, func(e *colly.HTMLElement) {
-		if strings.EqualFold(strings.TrimSpace(e.Text), now.Weekday().String()) {
+		// Match day of the week and ensure first instance
+		if strings.EqualFold(strings.TrimSpace(e.Text), now.Weekday().String()) && index == -1 {
 			index = e.Index + 2
 		}
 
